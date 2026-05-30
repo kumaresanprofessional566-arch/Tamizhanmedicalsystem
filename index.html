@@ -79,14 +79,14 @@
             justify-content: space-between;
             padding: 0.55rem 1.2rem 0.55rem 0.75rem;
             width: min(92%, 900px);
-            background: rgba(236, 253, 245, 0.62);
+            background: rgba(219, 234, 254, 0.62);
             backdrop-filter: blur(24px) saturate(190%);
             -webkit-backdrop-filter: blur(24px) saturate(190%);
-            border: 1.5px solid rgba(16, 185, 129, 0.28);
+            border: 1.5px solid rgba(37, 99, 235, 0.28);
             border-radius: 100px;
             box-shadow:
-                0 8px 32px rgba(5, 150, 105, 0.13),
-                0 2px 8px rgba(16, 185, 129, 0.09),
+                0 8px 32px rgba(37, 99, 235, 0.13),
+                0 2px 8px rgba(37, 99, 235, 0.09),
                 inset 0 1px 0 rgba(255,255,255,0.75);
             animation: navDrop .5s cubic-bezier(.34,1.56,.64,1) both;
         }
@@ -96,10 +96,10 @@
         }
         /* subtle glow on scroll – added via JS class */
         nav.scrolled {
-            background: rgba(209, 250, 229, 0.78);
+            background: rgba(191, 219, 254, 0.78);
             box-shadow:
-                0 14px 44px rgba(5, 150, 105, 0.18),
-                0 2px 8px rgba(16, 185, 129, 0.12),
+                0 14px 44px rgba(37, 99, 235, 0.18),
+                0 2px 8px rgba(37, 99, 235, 0.12),
                 inset 0 1px 0 rgba(255,255,255,0.85);
         }
 
@@ -113,7 +113,7 @@
             display: block; font-size: .9rem; font-weight: 700;
             color: var(--blue-dark); line-height: 1.1;
             white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-            max-width: 160px;
+            max-width: 220px;
         }
         .logo-text span { font-size: .6rem; color: var(--text-muted); letter-spacing: .08em; text-transform: uppercase }
 
@@ -392,9 +392,26 @@
 
         /* ── CONTACT ── */
         .contact-bg { background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary)) }
-        .ct-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; max-width: 1000px; margin: 0 auto }
+        .ct-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: center; max-width: 1100px; margin: 0 auto }
         .ct-details { margin-top: 2.2rem; display: flex; flex-direction: column; gap: 1.1rem }
         .ct-item { display: flex; align-items: flex-start; gap: .9rem }
+
+        /* ── FOUNDER SECTION ── */
+        .founder-section {
+            display: flex; flex-direction: column; align-items: center; gap: 2rem; text-align: center;
+            background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            padding: 3rem 2rem; border-radius: 24px; border: 1.5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(37, 99, 235, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.5);
+        }
+        .founder-photo {
+            width: 280px; height: 280px; background: transparent;
+            border: none; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; flex-shrink: 0; box-shadow: 0 8px 24px rgba(37,99,235,.12);
+        }
+        .founder-info { display: flex; flex-direction: column; gap: .6rem }
+        .founder-name { font-size: 1.45rem; font-weight: 900; color: var(--blue-dark); line-height: 1.2 }
+        .founder-title { font-size: 1rem; font-weight: 700; color: var(--blue); letter-spacing: .05em }
+        .founder-company { font-size: .95rem; font-weight: 600; color: var(--text-muted); margin-top: .3rem; padding-top: .8rem; border-top: 2px solid var(--border) }
         .ct-ic {
             width: 40px; height: 40px; flex-shrink: 0;
             background: var(--white); border: 1.5px solid var(--border);
@@ -712,7 +729,7 @@
         <div class="p-grid">
             <div class="p-card reveal">
                 <div class="p-icon">🩺</div>
-                <img src="https://via.placeholder.com/400x200/dbeafe/1e40af?text=Diagnostic+Equipment" alt="Diagnostic Equipment" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:1rem;border:1px solid #bfdbfe">
+                <img src="Diagnostic Equipment.jfif" alt="Diagnostic Equipment" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:1rem;border:1px solid #bfdbfe">
                 <h3>Diagnostic Equipment</h3>
                 <p>ECG machines, patient monitors, ultrasound scanners, pulse oximeters, and digital X-ray systems.</p>
                 <a href="#contact" class="p-link">Enquire Now →</a>
@@ -720,7 +737,7 @@
             
             <div class="p-card reveal">
                 <div class="p-icon">🩹</div>
-                <img src="https://via.placeholder.com/400x200/dbeafe/1e40af?text=Surgical+Equipment" alt="Surgical Equipment" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:1rem;border:1px solid #bfdbfe">
+                <img src="Surgical Equipment.jfif" alt="Surgical Equipment" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:1rem;border:1px solid #bfdbfe">
                 <h3>Surgical Equipment</h3>
                 <p>4K/HD Laparoscopy Equipment, Operation Theatre Light and sterile surgical supplies.</p>
                 <a href="#contact" class="p-link">Enquire Now →</a>
@@ -728,14 +745,14 @@
             
             <div class="p-card reveal">
                 <div class="p-icon">🛏</div>
-                <img src="https://via.placeholder.com/400x200/dbeafe/1e40af?text=Hospital+Furniture" alt="Hospital Furniture" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:1rem;border:1px solid #bfdbfe">
+                <img src="Hospital Furniture.jfif" alt="Hospital Furniture" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:1rem;border:1px solid #bfdbfe">
                 <h3>Hospital Furniture</h3>
                 <p>Hospital beds, stretchers, wheelchairs, OT tables, examination tables, and stainless steel medical furniture.</p>
                 <a href="#contact" class="p-link">Enquire Now →</a>
             </div>
             <div class="p-card reveal">
                 <div class="p-icon">🫁</div>
-                <img src="https://via.placeholder.com/400x200/dbeafe/1e40af?text=ICU+Critical+Care" alt="ICU & Critical Care" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:1rem;border:1px solid #bfdbfe">
+                <img src="ICU.jfif" alt="ICU & Critical Care" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:1rem;border:1px solid #bfdbfe">
                 <h3>ICU &amp; Critical Care</h3>
                 <p>Advanced ICU/Transport Ventilators,Anesthesia workstations, infusion pumps, Syringe pumps, defibrillators, ICU/Transport Patient Monitors, Fetal Monitors, Neonatal Products.</p>
                 <a href="#contact" class="p-link">Enquire Now →</a>
@@ -815,10 +832,20 @@
                 <h2 class="s-title">Get In Touch With Our Team</h2>
                 <p class="s-desc">Have a requirement or need a quotation? Our sales team is ready to assist you with the right medical products at the right price.</p>
                 <div class="ct-details">
-                    <div class="ct-item"><div class="ct-ic">📍</div><div><h5>Address</h5><p>No6, 64, Palla St, TVS Nagar, Agraharam, Korattur, Chennai – 600076</p></div></div>
+                    <div class="ct-item"><div class="ct-ic">📍</div><div><h5>Address</h5><p>No: 6/64, Palla St, TVS Nagar, Agraharam, Korattur, Chennai – 600076</p></div></div>
                     <div class="ct-item"><div class="ct-ic">📞</div><div><h5>Phone</h5><p>+91 094449 91855</p></div></div>
                     <div class="ct-item"><div class="ct-ic">✉</div><div><h5>Email</h5><p>thamizhanmedicalsystems@gmail.com</p></div></div>
                     <div class="ct-item"><div class="ct-ic">🕐</div><div><h5>Business Hours</h5><p>Mon – Sat: 9:00 AM – 6:00 PM</p></div></div>
+                </div>
+            </div>
+            <div class="reveal founder-section">
+                <div class="founder-photo">
+                    <img src="Ramu.png" alt="Ramu .M - Founder" style="width:100%;height:100%;object-fit:cover;border-radius:50%">
+                </div>
+                <div class="founder-info">
+                    <div class="founder-name">Ramu M swamy</div>
+                    <div class="founder-title">Founder & CEO </div>
+                    <div class="founder-company">Thamizhan Medical Systems</div>
                 </div>
             </div>
         </div>
@@ -830,7 +857,7 @@
             <div class="f-brand">
                 <a href="#" class="logo">
                     <img src="IMG-20260417-WA0014.jpg" alt="Logo" style="height:48px;width:48px;object-fit:contain;border-radius:50%;border:2px solid rgba(255,255,255,.2)" />
-                    <div class="f-logo-text"><strong>Thamizhan Medical</strong><span>System Pvt. Ltd.</span></div>
+                    <div class="f-logo-text"><strong>Thamizhan Medical Systems</strong><span>Since 2017.</span></div>
                 </a>
                 <p>Your trusted medical sales partner across Tamil Nadu. Supplying quality healthcare products since 2017 with integrity and commitment.</p>
             </div>
