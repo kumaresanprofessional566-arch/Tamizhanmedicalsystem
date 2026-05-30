@@ -20,13 +20,49 @@
             --text-muted: #4b6a8f;
             --white: #ffffff;
             --border: #bfdbfe;
+            --bg-primary: #ffffff;
+            --bg-secondary: #eff6ff;
+        }
+
+        html.dark-mode {
+            --text: #e0e7ff;
+            --text-muted: #a5b4fc;
+            --white: #1e1e30;
+            --border: #4c1d95;
+            --blue-faint: #2d1b69;
+            --blue-pale: #3d2680;
+            --bg-primary: #0f0f1e;
+            --bg-secondary: #1a1a2e;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background: #ffffff;
+            background: var(--bg-primary);
             color: var(--text);
             overflow-x: hidden;
+            transition: background-color .3s, color .3s;
+        }
+
+        html.dark-mode body {
+            background: var(--bg-primary);
+        }
+
+        /* ── DARK THEME TOGGLE ── */
+        .theme-toggle {
+            position: fixed; bottom: 2rem; left: 2rem; z-index: 9997;
+            width: 52px; height: 52px; background: var(--blue-mid);
+            border: 2px solid var(--border); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; cursor: pointer; transition: all .3s;
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 24px rgba(37, 99, 235, 0.4);
+        }
+        html.dark-mode .theme-toggle {
+            background: #6366f1;
+            border-color: var(--border);
         }
 
         /* ── NAVBAR (iPhone Glassmorphism Floating Pill) ── */
@@ -151,7 +187,7 @@
             gap: 4rem;
             align-items: center;
             padding: 4rem 5% 4rem;
-            background: linear-gradient(135deg, #ffffff 0%, #eff6ff 50%, #dbeafe 100%);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--blue-faint) 50%, var(--blue-pale) 100%);
             border-bottom: 1px solid var(--border);
         }
 
@@ -206,12 +242,12 @@
             padding: 2rem 5%;
             text-align: center;
             border-bottom: 1px solid var(--border);
-            background: var(--blue-faint);
+            background: var(--bg-secondary);
         }
         .partners p { font-size: .72rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.5rem }
         .brands { display: flex; justify-content: center; flex-wrap: wrap; gap: .8rem }
         .brand {
-            background: #fff; border: 1.5px solid var(--border);
+            background: var(--white); border: 1.5px solid var(--border);
             border-radius: 8px; padding: .6rem 1.4rem;
             font-size: .77rem; font-weight: 700; color: var(--blue-dark);
             letter-spacing: .04em; text-transform: uppercase; transition: all .2s;
@@ -243,6 +279,7 @@
             min-height: 380px; display: flex; flex-direction: column;
             justify-content: center; gap: 1.5rem; text-align: center;
             position: relative; overflow: hidden;
+            transition: background-color .3s;
         }
         .about-visual-wrap::before {
             content: ''; position: absolute; top: -60px; right: -60px;
@@ -251,9 +288,9 @@
             border-radius: 50%;
         }
 
-        .icon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem }
+        .icon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem }
         .icon-item {
-            background: #fff; border-radius: 12px; padding: 1.1rem .6rem;
+            background: var(--white); border-radius: 12px; padding: 1.1rem .6rem;
             border: 1.5px solid var(--border); transition: all .2s;
         }
         .icon-item:hover { border-color: var(--blue-mid); transform: translateY(-2px) }
@@ -270,14 +307,14 @@
         }
 
         /* ── PRODUCTS ── */
-        .sec-alt { background: var(--blue-faint) }
+        .sec-alt { background: var(--bg-secondary) }
         .p-header { text-align: center; margin-bottom: 3.5rem }
         .p-header h2, .p-header .s-desc { margin-left: auto; margin-right: auto }
 
-        .p-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem }
+        .p-grid { display: grid; grid-template-columns: repeat(2, minmax(260px, 1fr)); gap: 1.5rem }
 
         .p-card {
-            background: #fff;
+            background: var(--white);
             border: 1.5px solid var(--border);
             border-radius: 18px; padding: 1.8rem;
             transition: all .3s; position: relative; overflow: hidden;
@@ -292,7 +329,7 @@
 
         .p-icon {
             width: 50px; height: 50px;
-            background: var(--blue-faint); border: 1.5px solid var(--border);
+            background: var(--bg-secondary); border: 1.5px solid var(--border);
             border-radius: 12px; display: flex; align-items: center;
             justify-content: center; font-size: 1.5rem; margin-bottom: 1.1rem;
         }
@@ -308,7 +345,7 @@
         /* ── SERVICES ── */
         .sv-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.3rem }
         .sv-card {
-            background: #fff; border: 1.5px solid var(--border);
+            background: var(--white); border: 1.5px solid var(--border);
             border-radius: 16px; padding: 1.6rem 1.3rem; text-align: center; transition: all .25s;
         }
         .sv-card:hover { transform: translateY(-4px); border-color: var(--blue-mid); box-shadow: 0 8px 24px rgba(37,99,235,.1) }
@@ -317,10 +354,10 @@
         .sv-card p { font-size: .8rem; color: var(--text-muted); line-height: 1.65 }
 
         /* ── WHY ── */
-        .why-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center }
-        .w-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem }
+        .why-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start }
+        .w-grid { display: grid; grid-template-columns: repeat(2, minmax(240px, 1fr)); gap: 1.1rem }
         .w-item {
-            background: #fff; border: 1.5px solid var(--border);
+            background: var(--white); border: 1.5px solid var(--border);
             border-left: 4px solid var(--blue-mid); border-radius: 12px;
             padding: 1.4rem; transition: all .2s; cursor: pointer;
         }
@@ -336,7 +373,7 @@
 
         .t-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem }
         .t-card {
-            background: #fff; border: 1.5px solid var(--border);
+            background: var(--white); border: 1.5px solid var(--border);
             border-radius: 18px; padding: 1.8rem; transition: all .3s; cursor: pointer;
         }
         .t-card:hover { transform: translateY(-3px); border-color: var(--blue-mid); box-shadow: 0 8px 24px rgba(37,99,235,.1) }
@@ -354,30 +391,33 @@
         .ai span { font-size: .73rem; color: var(--text-muted) }
 
         /* ── CONTACT ── */
-        .contact-bg { background: linear-gradient(135deg, #eff6ff, #dbeafe) }
+        .contact-bg { background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary)) }
         .ct-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; max-width: 1000px; margin: 0 auto }
         .ct-details { margin-top: 2.2rem; display: flex; flex-direction: column; gap: 1.1rem }
         .ct-item { display: flex; align-items: flex-start; gap: .9rem }
         .ct-ic {
             width: 40px; height: 40px; flex-shrink: 0;
-            background: #fff; border: 1.5px solid var(--border);
+            background: var(--white); border: 1.5px solid var(--border);
             border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem;
         }
         .ct-item h5 { font-size: .73rem; color: var(--blue-mid); letter-spacing: .06em; text-transform: uppercase; margin-bottom: .15rem }
         .ct-item p { font-size: .87rem; color: var(--text) }
 
         .ct-form {
-            background: #fff; border: 1.5px solid var(--border);
+            background: var(--white); border: 1.5px solid var(--border);
             border-radius: 20px; padding: 2.3rem;
             box-shadow: 0 8px 32px rgba(30,64,175,.08);
         }
         .fg { margin-bottom: 1.1rem }
         .fg label { display: block; font-size: .77rem; font-weight: 600; color: var(--blue-dark); margin-bottom: .45rem; letter-spacing: .04em }
         .fg input, .fg select, .fg textarea {
-            width: 100%; background: var(--blue-faint);
+            width: 100%; background: var(--bg-secondary);
             border: 1.5px solid var(--border); border-radius: 8px;
             padding: .7rem .9rem; color: var(--text);
             font-family: 'Inter', sans-serif; font-size: .88rem; outline: none; transition: border-color .2s;
+        }
+        .fg input:focus, .fg select:focus, .fg textarea:focus {
+            border-color: var(--blue-mid); background: var(--white);
         }
         .fg input::placeholder, .fg textarea::placeholder { color: #94a3b8 }
         .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--blue-mid); background: #fff }
@@ -400,7 +440,7 @@
         }
         .modal.active { display: flex; align-items: center; justify-content: center }
         .modal-content {
-            background: #fff; border: 1.5px solid var(--border);
+            background: var(--white); border: 1.5px solid var(--border);
             border-radius: 20px; padding: 2rem; max-width: 600px; width: 90%;
             max-height: 80vh; overflow-y: auto;
             animation: slideUp .3s ease; position: relative;
@@ -423,11 +463,17 @@
             background: var(--blue-dark);
             padding: 4rem 5% 2rem;
             border-top: 2px solid var(--blue-mid);
+            transition: background-color .3s;
+        }
+        html.dark-mode footer {
+            background: #0f0f1e;
+            border-top-color: #4c1d95;
         }
         .f-grid {
-            display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            display: grid; grid-template-columns: repeat(2, minmax(240px, 1fr));
             gap: 3rem; padding-bottom: 3rem;
             border-bottom: 1px solid rgba(255,255,255,.15);
+            align-items: start;
         }
         .f-brand p { font-size: .85rem; color: #bfdbfe; line-height: 1.75; margin-top: .8rem }
         .f-logo-text strong { display: block; font-size: .95rem; font-weight: 700; color: #fff; line-height: 1.1 }
@@ -444,6 +490,7 @@
             flex: 1; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
             border-radius: 7px; padding: .6rem .85rem; color: #fff;
             font-family: 'Inter', sans-serif; font-size: .82rem; outline: none;
+            transition: all .2s;
         }
         .nl-form input::placeholder { color: rgba(255,255,255,.45) }
         .nl-form input:focus { border-color: #93c5fd }
@@ -629,16 +676,15 @@
     <section class="s" id="about">
         <div class="about-grid">
             <div class="about-visual-wrap reveal">
-                <div style="font-size:2.8rem">🏥</div>
+                <img src="IMG-20260417-WA0014.jpg" alt="Thamizhan Medical Logo" style="width:120px;height:120px;object-fit:contain;border-radius:50%;border:3px solid var(--border);margin:0 auto .8rem;box-shadow:0 4px 16px rgba(37,99,235,0.15)">
                 <h3 style="font-size:1.25rem;font-weight:800;color:var(--blue-dark)">Thamizhan Medical System</h3>
                 <p style="font-size:.82rem;color:var(--text-muted);max-width:260px;margin:0 auto">Empowering healthcare institutions with world-class medical equipment and supplies</p>
                 <div class="icon-grid">
                     <div class="icon-item"><div class="ic">🩺</div><span>Diagnostics</span></div>
-                    <div class="icon-item"><div class="ic">🔬</div><span>Lab Equip</span></div>
                     <div class="icon-item"><div class="ic">🩹</div><span>Surgical</span></div>
                     <div class="icon-item"><div class="ic">🫀</div><span>Cardiology</span></div>
                     <div class="icon-item"><div class="ic">🚑</div><span>Emergency</span></div>
-                    <div class="icon-item"><div class="ic">💊</div><span>Pharma</span></div>
+                    
                 </div>
             </div>
             <div class="reveal">
@@ -671,27 +717,15 @@
                 <p>ECG machines, patient monitors, ultrasound scanners, pulse oximeters, and digital X-ray systems.</p>
                 <a href="#contact" class="p-link">Enquire Now →</a>
             </div>
-            <div class="p-card reveal">
-                <div class="p-icon">🔬</div>
-                <img src="https://via.placeholder.com/400x200/dbeafe/1e40af?text=Laboratory+Instruments" alt="Laboratory Instruments" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:1rem;border:1px solid #bfdbfe">
-                <h3>Laboratory Instruments</h3>
-                <p>Hematology analyzers, biochemistry analyzers, centrifuges, microscopes, and complete lab setup solutions.</p>
-                <a href="#contact" class="p-link">Enquire Now →</a>
-            </div>
+            
             <div class="p-card reveal">
                 <div class="p-icon">🩹</div>
-                <img src="https://via.placeholder.com/400x200/dbeafe/1e40af?text=Surgical+Consumables" alt="Surgical Consumables" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:1rem;border:1px solid #bfdbfe">
-                <h3>Surgical Consumables</h3>
-                <p>Disposable gloves, syringes, IV sets, catheters, sutures, dressings, and sterile surgical supplies.</p>
+                <img src="https://via.placeholder.com/400x200/dbeafe/1e40af?text=Surgical+Equipment" alt="Surgical Equipment" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:1rem;border:1px solid #bfdbfe">
+                <h3>Surgical Equipment</h3>
+                <p>4K/HD Laparoscopy Equipment, Operation Theatre Light and sterile surgical supplies.</p>
                 <a href="#contact" class="p-link">Enquire Now →</a>
             </div>
-            <div class="p-card reveal">
-                <div class="p-icon">💊</div>
-                <img src="https://via.placeholder.com/400x200/dbeafe/1e40af?text=Pharmaceutical+Products" alt="Pharmaceutical Products" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:1rem;border:1px solid #bfdbfe">
-                <h3>Pharmaceutical Products</h3>
-                <p>Licensed wholesale distribution of essential medicines, OTC products, and hospital-grade pharmaceutical supplies.</p>
-                <a href="#contact" class="p-link">Enquire Now →</a>
-            </div>
+            
             <div class="p-card reveal">
                 <div class="p-icon">🛏</div>
                 <img src="https://via.placeholder.com/400x200/dbeafe/1e40af?text=Hospital+Furniture" alt="Hospital Furniture" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:1rem;border:1px solid #bfdbfe">
@@ -703,7 +737,7 @@
                 <div class="p-icon">🫁</div>
                 <img src="https://via.placeholder.com/400x200/dbeafe/1e40af?text=ICU+Critical+Care" alt="ICU & Critical Care" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:1rem;border:1px solid #bfdbfe">
                 <h3>ICU &amp; Critical Care</h3>
-                <p>Ventilators, infusion pumps, defibrillators, oxygen concentrators, and complete ICU setup equipment.</p>
+                <p>Advanced ICU/Transport Ventilators,Anesthesia workstations, infusion pumps, Syringe pumps, defibrillators, ICU/Transport Patient Monitors, Fetal Monitors, Neonatal Products.</p>
                 <a href="#contact" class="p-link">Enquire Now →</a>
             </div>
         </div>
@@ -717,7 +751,7 @@
             <p class="s-desc">Beyond supply, we provide complete lifecycle support to our healthcare partners.</p>
         </div>
         <div class="sv-grid">
-            <div class="sv-card reveal"><span class="sv-icon">🚚</span><h4>Prompt Delivery</h4><p>Same-day and next-day delivery across Chennai. Pan Tamil Nadu delivery within 48 hours with cold chain.</p></div>
+            <div class="sv-card reveal"><span class="sv-icon">🚚</span><h4>Prompt Delivery</h4><p>Seamless distribution across Chennai and Tamil Nadu, backed by advanced cold chain infrastructure to ensure products reach you in optimal condition.</p></div>
             <div class="sv-card reveal"><span class="sv-icon">🔧</span><h4>AMC &amp; Maintenance</h4><p>Annual Maintenance Contracts for all major equipment. Trained technicians for installation, calibration &amp; servicing.</p></div>
             <div class="sv-card reveal"><span class="sv-icon">📋</span><h4>Regulatory Support</h4><p>Assistance with drug license, CDSCO registration, and compliance documentation for clinics and hospitals.</p></div>
             <div class="sv-card reveal"><span class="sv-icon">🎓</span><h4>Staff Training</h4><p>Product usage training and biomedical education sessions for hospital staff on newly procured equipment.</p></div>
@@ -737,8 +771,8 @@
         
                 <div class="w-item reveal"><div class="wi">💰</div><h4>Competitive Pricing</h4><p>Direct manufacturer tie-ups ensure best prices without hidden charges.</p></div>
                 <div class="w-item reveal"><div class="wi">📞</div><h4>24/7 Support</h4><p>Round-the-clock customer service and emergency medical supply support.</p></div>
-                <div class="w-item reveal"><div class="wi">🤝</div><h4>Trusted Network</h4><p>1,200+ satisfied clients including government hospitals and diagnostic labs.</p></div>
-                <div class="w-item reveal"><div class="wi">⚡</div><h4>Fast Turnaround</h4><p>Bulk orders processed and dispatched within 24 hours. Urgent delivery available.</p></div>
+                <div class="w-item reveal"><div class="wi">🤝</div><h4>Trusted Network</h4><p>100+ satisfied clients including government hospitals and diagnostic labs.</p></div>
+                <div class="w-item reveal"><div class="wi">⚡</div><h4>Fast Turnaround</h4><p>Bulk orders are handled with priority and dispatched as quickly as possible to ensure timely delivery. Expedited shipping options are available for urgent requirements.</p></div>
                 <div class="w-item reveal"><div class="wi">📄</div><h4>Full Documentation</h4><p>All invoices, warranties, and regulatory documents provided with every order.</p></div>
             </div>
         </div>
@@ -810,14 +844,10 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
-            <div class="f-nl f-col">
-                <h5>Stay Updated</h5>
-                <p>Subscribe for latest product updates, offers, and healthcare news.</p>
-                <div class="nl-form"><input type="email" placeholder="Enter your email" /><button>Subscribe</button></div>
-            </div>
+            
         </div>
         <div class="f-bottom">
-            <div>© 2024 Thamizhan Medical System Pvt. Ltd. All Rights Reserved. | Drug License No: TN-12345 | GST: 33XXXXX1234X1Z5</div>
+            <div>© 2024 Thamizhan Medical System. All Rights Reserved.  | GST: 33XXXXX1234X1Z5</div>
             <div class="social">
                 <a href="#" class="soc">f</a><a href="#" class="soc">in</a>
                 <a href="#" class="soc">✉</a><a href="#" class="soc">▶</a>
@@ -825,7 +855,8 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/918939697632" class="wa" target="_blank">💬</a>
+    <a href="https://wa.me/917904747975" class="wa" target="_blank">💬</a>
+    <div class="theme-toggle" id="theme-toggle" title="Toggle Dark Mode">🌙</div>
 
     <!-- MODALS -->
     <div id="modal-certified" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><img src="IMG-20260417-WA0014.jpg" alt="Certified Quality" class="modal-img" /><h3 class="modal-title">🏆 Certified Quality</h3><p class="modal-text">All our products carry BIS, CE, FDA, or ISO certification ensuring the highest standards of quality and safety. We work exclusively with certified manufacturers and maintain strict quality control protocols across all our supply chain operations.</p></div></div>
@@ -871,6 +902,18 @@
 
         const testMap = {0:'modal-testimonial-1',1:'modal-testimonial-2',2:'modal-testimonial-3'};
         document.querySelectorAll('.t-card').forEach((card,i) => card.addEventListener('click', () => { if(testMap[i]) document.getElementById(testMap[i]).classList.add('active') }));
+
+        // ── DARK THEME TOGGLE ──
+        const themeToggle = document.getElementById('theme-toggle');
+        const isDarkMode = localStorage.getItem('theme') === 'dark';
+        if (isDarkMode) document.documentElement.classList.add('dark-mode');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark-mode');
+            const isDark = document.documentElement.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+        });
+        if (isDarkMode) themeToggle.textContent = '☀️';
     </script>
 </body>
 </html>
